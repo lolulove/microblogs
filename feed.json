@@ -7,6 +7,24 @@
 	"items": [
 		
 			{
+				"id": "http://lolulove.micro.blog/2026/02/03/feb.html",
+				
+				"content_html": "<p>03 feb 2026</p>\n",
+				"content_text": "03 feb 2026\n",
+				"date_published": "2026-02-03T20:42:04-07:00",
+				"url": "https://omololuakapo.com/2026/02/03/feb.html",
+				"tags": ["private"]
+			},
+			{
+				"id": "http://lolulove.micro.blog/2026/01/31/jan.html",
+				
+				"content_html": "<p>31 jan 2026</p>\n",
+				"content_text": "31 jan 2026\n",
+				"date_published": "2026-01-31T20:39:55-07:00",
+				"url": "https://omololuakapo.com/2026/01/31/jan.html",
+				"tags": ["private"]
+			},
+			{
 				"id": "http://lolulove.micro.blog/2026/01/30/jan.html",
 				
 				"content_html": "<p>30 jan 2026</p>\n",
@@ -109,7 +127,7 @@
 				"id": "http://lolulove.micro.blog/2026/01/12/january.html",
 				"title": "Struggling to explain how DevOps transforms software delivery?",
 				"content_html": "<p>Here’s a simple way to think about it:</p>\n<ol>\n<li>\n<p>Traditional software delivery is like a relay race.\nEach team runs their part, then hands the baton off — often dropping it along the way.</p>\n</li>\n<li>\n<p>DevOps turns the relay into a team sport.\nDevelopers, operations, and security play together with shared goals and responsibility.</p>\n</li>\n<li>\n<p>Automation is the playbook.\nTesting, deployments, infrastructure, and security checks run automatically instead of manually.</p>\n</li>\n<li>\n<p>Small releases replace big risky launches.\nChanges are delivered frequently, safely, and with less stress.</p>\n</li>\n<li>\n<p>Monitoring is the scoreboard.\nTeams see performance, errors, and user impact in real time — and adjust quickly.</p>\n</li>\n</ol>\n<p>The result?\nFaster releases, fewer failures, happier users, and teams that actually enjoy shipping software.</p>\n<p>DevOps doesn’t just speed up delivery — it makes delivery reliable.</p>\n<p>How do you explain DevOps in simple terms?\nDrop your favorite analogy below 👇</p>\n<!-- raw HTML omitted -->\n",
-				"content_text": "Here’s a simple way to think about it:\n\n1. Traditional software delivery is like a relay race.\nEach team runs their part, then hands the baton off — often dropping it along the way.\n\n2. DevOps turns the relay into a team sport.\nDevelopers, operations, and security play together with shared goals and responsibility.\n\n3. Automation is the playbook.\nTesting, deployments, infrastructure, and security checks run automatically instead of manually.\n\n4. Small releases replace big risky launches.\nChanges are delivered frequently, safely, and with less stress.\n\n5. Monitoring is the scoreboard.\nTeams see performance, errors, and user impact in real time — and adjust quickly.\n\nThe result?\nFaster releases, fewer failures, happier users, and teams that actually enjoy shipping software.\n\nDevOps doesn’t just speed up delivery — it makes delivery reliable.\n\nHow do you explain DevOps in simple terms?\nDrop your favorite analogy below 👇\n\n<img src=\"https://eu.uploads.micro.blog/275033/2026/agile-cicd-devops.jpg\">\n",
+				"content_text": "Here’s a simple way to think about it:\n\n1. Traditional software delivery is like a relay race.\nEach team runs their part, then hands the baton off — often dropping it along the way.\n\n2. DevOps turns the relay into a team sport.\nDevelopers, operations, and security play together with shared goals and responsibility.\n\n3. Automation is the playbook.\nTesting, deployments, infrastructure, and security checks run automatically instead of manually.\n\n4. Small releases replace big risky launches.\nChanges are delivered frequently, safely, and with less stress.\n\n5. Monitoring is the scoreboard.\nTeams see performance, errors, and user impact in real time — and adjust quickly.\n\nThe result?\nFaster releases, fewer failures, happier users, and teams that actually enjoy shipping software.\n\nDevOps doesn’t just speed up delivery — it makes delivery reliable.\n\nHow do you explain DevOps in simple terms?\nDrop your favorite analogy below 👇\n\n<img src=\"uploads/2026/agile-cicd-devops.jpg\">\n",
 				"date_published": "2026-01-12T17:47:19-07:00",
 				"url": "https://omololuakapo.com/2026/01/12/january.html"
 			},
