@@ -24,6 +24,66 @@
 	
 	  <div class="h-entry">
 		
+			<h1><a href="https://omololuakapo.com/2026/06/01/how-to-secure-your-cicd.html">🔐 How to Secure Your CI/CD Pipeline</a></h1>
+		
+
+		<a href="https://omololuakapo.com/2026/06/01/how-to-secure-your-cicd.html" class="u-url"><time class="dt-published" datetime="2026-06-01 20:15:11 -0600">Jun 1, 2026</time></a>
+
+		<div class="e-content">
+			 <p>CI/CD pipelines help teams ship software faster 🚀, but speed without security can create serious risk.</p>
+<p>A CI/CD pipeline is no longer just a developer tool. It is now part of the software supply chain. It connects source code, build systems, secrets, cloud environments, containers, third-party packages, and production deployments.</p>
+<p>That means one weak point in the pipeline can become a direct path into production.</p>
+<p>According to OWASP, CI/CD security risks include issues such as insufficient pipeline authorization, poisoned pipeline execution, insecure system configuration, improper artifact integrity validation, and poor secrets management. In simple terms, attackers are not only targeting applications anymore. They are targeting the process used to build and deploy them.</p>
+<p>Why CI/CD Security Matters</p>
+<p>Modern engineering teams are under pressure to release quickly.</p>
+<p>But the faster the release cycle, the more important pipeline security becomes.</p>
+<p>A small misconfiguration can expose secrets. 🔑
+An unverified dependency can introduce malicious code. ⚠️
+An over-permissioned build agent can become a privilege escalation point.
+A compromised deployment workflow can push unsafe code into production.</p>
+<p>This is why CI/CD security should not be treated as an afterthought. It should be built into the pipeline from the beginning.</p>
+<ol>
+<li>Protect Your Source Code Repository 🛡️</li>
+</ol>
+<p>Your repository is the starting point of the pipeline.</p>
+<p>If attackers gain access to your codebase, they may modify application code, pipeline files, infrastructure scripts, or secrets. That is why access control is one of the first layers of CI/CD security.</p>
+<p>Use multi-factor authentication.
+Apply branch protection rules.
+Require pull request reviews.
+Limit who can modify pipeline configuration files.
+Monitor unusual commits or changes to build workflows.</p>
+<p>A secure pipeline begins with a secure repository.</p>
+<ol start="2">
+<li>Manage Secrets Properly 🔑</li>
+</ol>
+<p>One of the most common CI/CD mistakes is exposing secrets inside code, logs, build scripts, or environment variables.</p>
+<p>Secrets include API keys, cloud credentials, database passwords, private tokens, and certificates.</p>
+<p>Instead of hardcoding secrets, use a dedicated secrets manager. Rotate credentials regularly. Mask sensitive values in logs. Avoid giving long-lived credentials to pipeline jobs.</p>
+<p>A good rule is simple: your pipeline should have access only to the secrets it needs, only when it needs them.</p>
+<ol start="3">
+<li>Apply Least Privilege Access 👤</li>
+</ol>
+<p>CI/CD tools often need access to cloud services, container registries, deployment environments, and infrastructure platforms.</p>
+<p>But giving the pipeline too much permission is dangerous.</p>
+<p>If a build job only needs read access, do not give it admin access.
+If a deployment job only targets staging, do not allow it to deploy to production.
+If a temporary token can be used, avoid permanent credentials.</p>
+<p>Least privilege reduces the damage if a pipeline component is compromised.</p>
+<ol start="4">
+<li>Scan Dependencies Before They Reach Production 🔍</li>
+</ol>
+<p>Most modern applications depend heavily on open-source packages.</p>
+<p>That makes dependency scanning critical.</p>
+<p>Use software composition analysis to detect vulnerable packages. Generate a software bill of materials where possible. Pin dependency versions instead of blindly pulling the latest release. Review high-risk packages before introducing them into production systems.</p>
+<p>The goal is not to avoid open source. The goal is to use it with visibility and control.</p>
+<p>To be contd. &raquo;&gt;Part2</p>
+<!-- raw HTML omitted -->
+
+		</div>
+	  </div>
+	
+	  <div class="h-entry">
+		
 			<h1><a href="https://omololuakapo.com/2026/05/29/what-automated-testing-in-cicd.html">What Automated Testing in CI/CD Looks Like</a></h1>
 		
 
