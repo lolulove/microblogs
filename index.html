@@ -24,6 +24,179 @@
 	
 	  <div class="h-entry">
 		
+			<h1><a href="https://omololuakapo.com/2026/06/11/cicd-best-practices-for-cloudnative.html">CI/CD Best Practices for Cloud-Native Applications</a></h1>
+		
+
+		<a href="https://omololuakapo.com/2026/06/11/cicd-best-practices-for-cloudnative.html" class="u-url"><time class="dt-published" datetime="2026-06-11 01:22:08 -0600">Jun 11, 2026</time></a>
+
+		<div class="e-content">
+			 <p>Cloud-native applications are designed for speed, scalability, and resilience.</p>
+<p>But without the right CI/CD practices, even the most modern applications can become difficult to manage.</p>
+<p>Here&rsquo;s a simple way to understand it:</p>
+<p>Think of a cloud-native application like a fleet of food delivery vehicles operating across an entire city.</p>
+<p>To keep deliveries fast and reliable, you need more than drivers—you need a well-designed system.</p>
+<p>1️⃣ Automate Everything Possible</p>
+<p>Imagine asking drivers to manually plan every route, calculate every delivery, and update every customer.</p>
+<p>Chaos would follow.</p>
+<p>In cloud-native environments, automate:</p>
+<p>✔ Builds
+✔ Testing
+✔ Deployments
+✔ Security scans
+✔ Monitoring</p>
+<p>The less manual work involved, the more reliable the process becomes.</p>
+<p>2️⃣ Deploy Small Changes Frequently</p>
+<p>Large deliveries are harder to manage.</p>
+<p>If something goes wrong, finding the problem takes longer.</p>
+<p>Cloud-native teams perform smaller, more frequent deployments.</p>
+<p>Benefits include:</p>
+<p>✔ Easier troubleshooting
+✔ Faster rollbacks
+✔ Lower deployment risk</p>
+<p>3️⃣ Test Early and Continuously</p>
+<p>Would you wait until the end of the day to check whether delivery vehicles are working?</p>
+<p>Probably not.</p>
+<p>Cloud-native CI/CD pipelines automatically run:</p>
+<p>✔ Unit tests
+✔ Integration tests
+✔ Security tests
+✔ End-to-end tests</p>
+<p>The earlier problems are detected, the cheaper they are to fix.</p>
+<p>4️⃣ Treat Infrastructure as Code</p>
+<p>Imagine rebuilding delivery routes manually every day.</p>
+<p>Infrastructure as Code (IaC) allows teams to define environments using code.</p>
+<p>Popular tools include:</p>
+<p>✔ Terraform
+✔ CloudFormation
+✔ Pulumi</p>
+<p>This improves consistency and repeatability.</p>
+<p>5️⃣ Build Security into the Pipeline</p>
+<p>Security should not be an afterthought.</p>
+<p>Modern pipelines integrate:</p>
+<p>✔ Dependency scanning
+✔ Container image scanning
+✔ Secret detection
+✔ Compliance checks</p>
+<p>This approach is often called DevSecOps.</p>
+<p>6️⃣ Monitor Everything</p>
+<p>Once deliveries begin, visibility matters.</p>
+<p>Cloud-native teams continuously monitor:</p>
+<p>✔ Application health
+✔ Performance metrics
+✔ Error rates
+✔ User experience</p>
+<p>Tools often include:</p>
+<p>✔ Prometheus
+✔ Grafana
+✔ Datadog
+✔ OpenTelemetry</p>
+<p>7️⃣ Use Containers Consistently</p>
+<p>Every delivery vehicle should operate the same way.</p>
+<p>Containers help ensure applications behave consistently across:</p>
+<p>✔ Development
+✔ Testing
+✔ Staging
+✔ Production</p>
+<p>This reduces the classic &ldquo;works on my machine&rdquo; problem.</p>
+<p>Why These Practices Matter</p>
+<p>Organizations that adopt mature CI/CD practices often achieve:</p>
+<p>✔ Faster release cycles
+✔ Higher deployment success rates
+✔ Reduced downtime
+✔ Better scalability
+✔ Improved customer experience</p>
+<p>Cloud-Native CI/CD Flow</p>
+<p>Developer Pushes Code
+↓
+Automated Build
+↓
+Automated Testing
+↓
+Security Validation
+↓
+Container Packaging
+↓
+Deployment to Kubernetes/Cloud
+↓
+Monitoring &amp; Feedback</p>
+<p>The Bottom Line</p>
+<p>Cloud-native applications are built to move fast.</p>
+<p>CI/CD best practices ensure they can move fast without sacrificing quality, reliability, or security.</p>
+<p>Because in cloud-native development, success isn&rsquo;t just about deploying more often.</p>
+<p>It&rsquo;s about deploying safely, consistently, and confidently. 🚀</p>
+<!-- raw HTML omitted -->
+
+		</div>
+	  </div>
+	
+	  <div class="h-entry">
+		
+			<h1><a href="https://omololuakapo.com/2026/06/01/201604.html">🔐 How to Secure Your CI/CD Pipeline Part 2</a></h1>
+		
+
+		<a href="https://omololuakapo.com/2026/06/01/201604.html" class="u-url"><time class="dt-published" datetime="2026-06-01 20:16:04 -0600">Jun 1, 2026</time></a>
+
+		<div class="e-content">
+			 <ol start="5">
+<li>Validate Build Artifacts ✅</li>
+</ol>
+<p>A secure CI/CD pipeline should prove that the artifact being deployed is the same artifact that was built, tested, and approved.</p>
+<p>This is where artifact signing, checksums, provenance, and controlled registries become important.</p>
+<p>Without artifact integrity validation, attackers may tamper with build outputs or replace approved artifacts with malicious ones.</p>
+<p>The pipeline should answer three questions:</p>
+<p>Who built this artifact?
+What source code was used?
+Has it been changed since it was built?</p>
+<ol start="6">
+<li>Secure the Build Environment 🏗️</li>
+</ol>
+<p>Build environments are often overlooked.</p>
+<p>A compromised build runner can steal secrets, alter build outputs, or inject malicious code. This is especially risky when runners are shared, persistent, or poorly isolated.</p>
+<p>Use clean build environments.
+Patch runners regularly.
+Avoid running untrusted code with privileged access.
+Separate production deployment jobs from general build jobs.
+Monitor runner activity.</p>
+<p>Your build system should be treated as sensitive infrastructure, not just a background automation tool.</p>
+<ol start="7">
+<li>Add Security Testing Into the Pipeline 🧪</li>
+</ol>
+<p>Security should not wait until the final stage of release.</p>
+<p>Add automated checks directly into the CI/CD workflow:</p>
+<p>Static application security testing for source code issues.
+Dependency scanning for vulnerable packages.
+Container image scanning for insecure base images.
+Infrastructure-as-code scanning for cloud misconfigurations.
+Secret scanning to detect accidental leaks.</p>
+<p>This approach helps teams find issues earlier, when they are cheaper and easier to fix.</p>
+<ol start="8">
+<li>Monitor the Pipeline Continuously 📊</li>
+</ol>
+<p>CI/CD security does not end after setup.</p>
+<p>You need continuous monitoring.</p>
+<p>Track failed login attempts.
+Watch for unusual pipeline changes.
+Review permission changes.
+Monitor deployment activity.
+Alert on unexpected secret access.
+Audit who changed workflows and when.</p>
+<p>A secure pipeline is not only protected. It is observable.</p>
+<p>Final Thought 💡</p>
+<p>CI/CD security is not about slowing developers down.</p>
+<p>It is about building a safer path from code to production.</p>
+<p>A strong pipeline should help teams move fast without losing control. It should protect source code, secrets, dependencies, artifacts, build systems, and deployment environments.</p>
+<p>The best CI/CD pipelines do three things well:</p>
+<p>They automate delivery. 🚀
+They enforce security. 🔒
+They create trust in every release. 🤝</p>
+<p>In today’s software environment, securing the CI/CD pipeline is no longer optional.</p>
+<p>It is part of building reliable, production-ready software. ✅</p>
+
+		</div>
+	  </div>
+	
+	  <div class="h-entry">
+		
 			<h1><a href="https://omololuakapo.com/2026/06/01/how-to-secure-your-cicd.html">🔐 How to Secure Your CI/CD Pipeline</a></h1>
 		
 
