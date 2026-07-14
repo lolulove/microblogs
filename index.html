@@ -24,6 +24,67 @@
 	
 	  <div class="h-entry">
 		
+			<h1><a href="https://omololuakapo.com/2026/07/13/how-to-optimize-build-times.html">How to Optimize Build Times in Your Pipeline Part 1</a></h1>
+		
+
+		<a href="https://omololuakapo.com/2026/07/13/how-to-optimize-build-times.html" class="u-url"><time class="dt-published" datetime="2026-07-13 20:01:34 -0600">Jul 13, 2026</time></a>
+
+		<div class="e-content">
+			 <p>⏳ Is your CI/CD pipeline taking longer to build than it should? You&rsquo;re not alone. Many development teams spend more time waiting for builds than writing code.</p>
+<p>Here&rsquo;s a simple way to understand how to optimize build times:</p>
+<p>✈️ Think of your CI/CD pipeline like a busy airport preparing flights for takeoff. The goal isn&rsquo;t just to get planes into the air—it&rsquo;s to get them there quickly, safely, and efficiently.</p>
+<p>🛫 1️⃣ Cache Frequently Used Resources</p>
+<p>Imagine if every flight had to order new fuel trucks, baggage carts, and catering before boarding.</p>
+<p>Delays would pile up fast.</p>
+<p>CI/CD pipelines work the same way.</p>
+<p>💡 Cache frequently used resources like:</p>
+<p>✅ Dependencies</p>
+<p>✅ Libraries</p>
+<p>✅ Docker layers</p>
+<p>Instead of downloading them every build, reuse what&rsquo;s already available.</p>
+<p>Result: ⚡ Faster builds and less waiting.</p>
+<p>⚙️ 2️⃣ Run Multiple Jobs in Parallel</p>
+<p>At an airport, fueling, baggage loading, and cabin cleaning happen at the same time.</p>
+<p>They don&rsquo;t wait for one another.</p>
+<p>Your pipeline shouldn&rsquo;t either.</p>
+<p>Run independent jobs simultaneously:</p>
+<p>✔️ Unit Tests</p>
+<p>✔️ Security Scans</p>
+<p>✔️ Code Quality Checks</p>
+<p>🎯 Parallel execution can significantly reduce overall build time.</p>
+<p>🎯 3️⃣ Build Only What Changed</p>
+<p>If one passenger changes their boarding pass, the airport doesn&rsquo;t restart check-in for everyone.</p>
+<p>Likewise&hellip;</p>
+<p>Don&rsquo;t rebuild your entire application if only one microservice changed.</p>
+<p>🚀 Build only the affected components.</p>
+<p>Less work = Faster pipelines.</p>
+<p>📦 4️⃣ Keep Docker Images Lightweight</p>
+<p>Large airplanes require more fuel and preparation.</p>
+<p>Large Docker images do too.</p>
+<p>Optimize them by:</p>
+<p>✅ Using lightweight base images</p>
+<p>✅ Removing unnecessary packages</p>
+<p>✅ Using multi-stage builds</p>
+<p>Smaller images move through your pipeline much faster.</p>
+<p>🧪 5️⃣ Separate Fast Tests from Slow Tests</p>
+<p>Every traveler goes through standard security.</p>
+<p>Only a few require additional screening.</p>
+<p>Your testing strategy should work the same way.</p>
+<p>Every Code Commit</p>
+<p>✅ Unit Tests</p>
+<p>Scheduled or Nightly Pipelines</p>
+<p>✅ Integration Tests</p>
+<p>✅ End-to-End Tests</p>
+<p>✅ Performance Tests</p>
+<p>⚡ Developers get faster feedback without sacrificing quality.</p>
+<p>To be contd. &raquo;&gt;Part2</p>
+<!-- raw HTML omitted -->
+
+		</div>
+	  </div>
+	
+	  <div class="h-entry">
+		
 			<h1><a href="https://omololuakapo.com/2026/06/17/continuous-deployment-vs-continuous-delivery.html">Continuous Deployment vs. Continuous Delivery: Key Differences</a></h1>
 		
 
