@@ -24,13 +24,96 @@
 	
 	  <div class="h-entry">
 		
+			<h1><a href="https://omololuakapo.com/2026/09/13/how-to-handle-secrets-and.html">🔐 How to Handle Secrets and Credentials in CI/CD Part 3</a></h1>
+		
+
+		<a href="https://omololuakapo.com/2026/09/13/how-to-handle-secrets-and.html" class="u-url"><time class="dt-published" datetime="2026-09-13 18:06:18 -0600">Sep 13, 2026</time></a>
+
+		<div class="e-content">
+			 <h3 id="--monitor-secret-access">👀 🔟 Monitor Secret Access</h3>
+<p>A bank doesn&rsquo;t just lock its vault.</p>
+<p>It also records:</p>
+<p>👤 Who accessed it</p>
+<p>🕐 When they accessed it</p>
+<p>🔑 What they accessed</p>
+<p>CI/CD environments should provide similar visibility.</p>
+<p>Monitor:</p>
+<p>📊 Authentication attempts</p>
+<p>📊 Secret access</p>
+<p>📊 Permission changes</p>
+<p>📊 Unusual pipeline activity</p>
+<p>📊 Failed access attempts</p>
+<p>If a credential is used unexpectedly, your team should be able to investigate quickly.</p>
+<p>🔄 A Secure CI/CD Flow</p>
+<p>A safer pipeline might look like:</p>
+<p>👨‍💻 Developer Pushes Code</p>
+<p>⬇️</p>
+<p>⚙️ CI Pipeline Starts</p>
+<p>⬇️</p>
+<p>🧪 Build &amp; Test</p>
+<p>⬇️</p>
+<p>🔐 Pipeline Authenticates</p>
+<p>⬇️</p>
+<p>🏦 Secret Retrieved Securely</p>
+<p>⬇️</p>
+<p>🚀 Application Deployed</p>
+<p>⬇️</p>
+<p>⏳ Temporary Credential Expires</p>
+<p>⬇️</p>
+<p>📊 Access Is Logged &amp; Monitored</p>
+<p>Notice what&rsquo;s missing?</p>
+<p>🚫 Secrets stored directly in the source code.</p>
+<p>🛡️ Secrets Management Checklist</p>
+<p>Before calling your pipeline secure, ask:</p>
+<p>✅ Are secrets stored outside source code?</p>
+<p>✅ Are sensitive values masked in logs?</p>
+<p>✅ Are permissions based on least privilege?</p>
+<p>✅ Are production secrets separated from development secrets?</p>
+<p>✅ Are credentials rotated appropriately?</p>
+<p>✅ Can compromised credentials be revoked quickly?</p>
+<p>✅ Are secret-access events monitored?</p>
+<p>🎯 The Bottom Line</p>
+<p>Managing secrets in CI/CD is like protecting the keys to a bank vault.</p>
+<p>You don&rsquo;t leave them lying around.</p>
+<p>You:</p>
+<p>🏦 Store them securely</p>
+<p>👤 Control who can access them</p>
+<p>⏳ Limit how long access lasts</p>
+<p>🔄 Rotate them when necessary</p>
+<p>🧾 Prevent them from appearing in logs</p>
+<p>👀 Monitor how they&rsquo;re being used</p>
+<p>Your CI/CD pipeline may be highly automated, but automation without secure credential management can create serious risk.</p>
+<p>Because in DevOps&hellip;</p>
+<p>🔐 Automate the deployment—not the exposure of your secrets.</p>
+<p>💬 How does your team manage secrets in CI/CD—platform secrets, HashiCorp Vault, cloud secret managers, or another approach? 👇</p>
+<h3 id="-11-a-concrete-github-actions-example">🐙 1️⃣1️⃣ A Concrete GitHub Actions Example</h3>
+<p>Let’s put this into practice.</p>
+<p>Imagine your GitHub Actions pipeline needs to build a Docker image and push it to a container registry.</p>
+<p>The pipeline needs credentials—but you don&rsquo;t want those credentials inside your repository.</p>
+<p>🏦 Think of GitHub Actions as the bank employee who needs temporary access to the vault.</p>
+<p>The employee should be able to retrieve what they need without seeing the master key written on their desk.</p>
+<h4 id="-step-1-store-the-credentials-as-github-secrets">🔐 Step 1: Store the Credentials as GitHub Secrets</h4>
+<p>Instead of putting credentials inside your workflow file, store them in:</p>
+<p>Repository → Settings → Secrets and variables → Actions</p>
+<p>For example:</p>
+<p>🔑 REGISTRY_USERNAME</p>
+<p>🔐 REGISTRY_PASSWORD</p>
+<p>Your repository contains the reference to the secret, not the actual credential.</p>
+<p>To be contd. »&gt;Part 4</p>
+<img src="uploads/2026/c455b40572.png">
+
+		</div>
+	  </div>
+	
+	  <div class="h-entry">
+		
 			<h1><a href="https://omololuakapo.com/2026/09/05/how-to-handle-secrets-and.html">🔐 How to Handle Secrets and Credentials in CI/CD Part 2</a></h1>
 		
 
 		<a href="https://omololuakapo.com/2026/09/05/how-to-handle-secrets-and.html" class="u-url"><time class="dt-published" datetime="2026-09-05 18:02:51 -0600">Sep 5, 2026</time></a>
 
 		<div class="e-content">
-			 <p>👤 5️⃣ Follow the Principle of Least Privilege</p>
+			 <h3 id="-5-follow-the-principle-of-least-privilege">👤 5️⃣ Follow the Principle of Least Privilege</h3>
 <p>Imagine giving every bank employee the master key to every vault.</p>
 <p>That would be unnecessary—and dangerous.</p>
 <p>The same principle applies to CI/CD.</p>
@@ -44,7 +127,8 @@
 <p>✅ Environment-specific permissions</p>
 <p>✅ Short-lived credentials where possible</p>
 <p>🎯 Give pipelines what they need—not everything they could possibly access.</p>
-<p>⏳ 6️⃣ Prefer Short-Lived Credentials</p>
+<hr>
+<h3 id="-6-prefer-short-lived-credentials">⏳ 6️⃣ Prefer Short-Lived Credentials</h3>
 <p>Imagine a bank access card that automatically expires after one hour.</p>
 <p>Even if someone steals it, its usefulness is limited.</p>
 <p>Modern CI/CD systems can use temporary credentials instead of permanent passwords.</p>
@@ -59,7 +143,8 @@
 <p>⬇️</p>
 <p>⏳ Credential expires</p>
 <p>This reduces the risk associated with long-lived credentials.</p>
-<p>🔄 7️⃣ Rotate Secrets Regularly</p>
+<hr>
+<h3 id="-7-rotate-secrets-regularly">🔄 7️⃣ Rotate Secrets Regularly</h3>
 <p>Imagine using the same vault combination for ten years.</p>
 <p>The longer it exists, the greater the opportunity for it to be compromised.</p>
 <p>Secrets should be rotated when appropriate.</p>
@@ -71,7 +156,8 @@
 <p>Automation can make rotation easier and reduce manual mistakes.</p>
 <p>And if a credential is suspected of being exposed?</p>
 <p>🚨 Revoke and replace it immediately.</p>
-<p>🧾 8️⃣ Keep Secrets Out of Logs</p>
+<hr>
+<h3 id="-8-keep-secrets-out-of-logs">🧾 8️⃣ Keep Secrets Out of Logs</h3>
 <p>There&rsquo;s another common problem.</p>
 <p>Your secret may be stored securely&hellip;</p>
 <p>But your pipeline accidentally prints it into the build logs.</p>
@@ -82,7 +168,8 @@
 <p>✅ Restrict access to pipeline logs</p>
 <p>✅ Prevent debugging commands from exposing credentials</p>
 <p>💡 Protecting the vault is useless if you accidentally print the combination on the receipt.</p>
-<p>☸️ 9️⃣ What About Kubernetes?</p>
+<hr>
+<h3 id="-9-what-about-kubernetes">☸️ 9️⃣ What About Kubernetes?</h3>
 <p>Suppose your CI/CD pipeline deploys an application to Kubernetes.</p>
 <p>The application needs a database password.</p>
 <p>Instead of embedding the password inside the container image:</p>
@@ -95,6 +182,8 @@
 <p>For stronger security requirements, Kubernetes can also integrate with external secret-management systems.</p>
 <p>The important idea is:</p>
 <p>🎯 Keep application code, container images, and sensitive credentials separate.</p>
+<h4 id="to-be-contd-part-3">To be contd. »&gt;Part 3</h4>
+<img src="uploads/2026/how-to-handle-secrets-and-credentials-in-cicd-2.png">
 
 		</div>
 	  </div>
@@ -161,7 +250,7 @@
 <p>⚙️ Jenkins → Credentials</p>
 <p>Instead of writing a password directly into your pipeline, you reference the stored secret.</p>
 <p>The pipeline knows where to retrieve it without exposing the actual value in your source code.</p>
-<p>To be contd. »&gt;Part 2</p>
+<h4 id="to-be-contd-part-2">To be contd. »&gt;Part 2</h4>
 <img src="uploads/2026/how-to-handle-secrets-and-credentials-in-cicd-1.png">
 
 		</div>
@@ -414,7 +503,7 @@ Your CI/CD pipeline should automate:</p>
 <p>✅ End-to-End Tests</p>
 <p>Each layer adds confidence before deployment.</p>
 <p>To be contd. &raquo;&gt;Part 2</p>
-<img src="https://eu.uploads.micro.blog/275033/2026/cicd-for-microservices-what-changes.png">
+<img src="uploads/2026/cicd-for-microservices-what-changes.png">
 
 		</div>
 	  </div>
