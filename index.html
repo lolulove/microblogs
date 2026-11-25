@@ -24,6 +24,215 @@
 	
 	  <div class="h-entry">
 		
+			<h1><a href="https://omololuakapo.com/2026/11/25/093138.html">Blue-Green vs Canary Deployments Explained Part 2</a></h1>
+		
+
+		<a href="https://omololuakapo.com/2026/11/25/093138.html" class="u-url"><time class="dt-published" datetime="2026-11-25 09:31:38 -0600">Nov 25, 2026</time></a>
+
+		<div class="e-content">
+			 <p>Blue-Green vs. Canary Deployments Explained Part 2
+☸️ 8️⃣ Kubernetes Deployment Example
+Let’s make this practical.
+Imagine you have a web application running in Kubernetes with 10 Pods.
+You want to release Version 2 without disrupting users.</p>
+<p>🔵🟢 Blue-Green with Kubernetes
+You run two separate Deployments:
+🔵 app-blue → Version 1
+🟢 app-green → Version 2
+Both can run at the same time.
+A Kubernetes Service controls which Deployment receives user traffic.
+Initially:
+Service → Blue (v1)
+After testing Green:
+Service → Green (v2)
+If something goes wrong?
+↩️ Change the Service selector back to Blue.
+That gives you a fast rollback without rebuilding the old version.</p>
+<p>🐤 Canary with Kubernetes
+Now imagine you want to expose only a small percentage of users to Version 2.
+You could run:
+🔵 9 Pods on Version 1
+🟢 1 Pod on Version 2
+That means roughly 10% of application capacity is running the new version.
+You monitor:
+📊 Error rates
+⏱️ Latency
+🔥 CPU and memory
+❌ Failed requests
+If everything looks healthy, gradually increase Version 2:
+10% → 25% → 50% → 100%
+If the metrics worsen:
+🛑 Stop the rollout.
+🔄 Reduce Version 2 replicas.
+✅ Keep Version 1 serving users.</p>
+<p>🎯 Kubernetes Makes the Strategy Practical
+Kubernetes provides the building blocks:
+☸️ Deployments manage application versions and replicas.
+📦 Pods run the actual containers.
+🌐 Services route traffic to Pods.
+🏷️ Labels and selectors determine which Pods receive traffic.
+📊 Prometheus and Grafana help monitor the rollout.
+So the deployment flow becomes:
+CI/CD Pipeline
+⬇️
+🐳 Build Container Image
+⬇️
+☸️ Deploy New Kubernetes Version
+⬇️
+🚦 Shift Traffic Gradually or Completely
+⬇️
+📡 Monitor
+⬇️
+✅ Continue Rollout
+or
+🔄 Roll Back
+The key idea is simple:
+Kubernetes gives you the infrastructure controls.
+Blue-Green and Canary define how you use those controls to reduce deployment risk.</p>
+<p>🤔 Which Strategy Should You Choose?
+Choose Blue-Green when:
+🔵 You want predictable environment switching.
+🔄 Rapid rollback is critical.
+🏗️ You can maintain parallel environments.
+Choose Canary when:
+🐤 You want gradual exposure.
+📊 You have strong monitoring.
+👥 You want to validate releases with real users before full rollout.
+For some systems, teams can even combine ideas from both approaches.</p>
+<p>🔄 Where They Fit in CI/CD
+A modern deployment pipeline might look like:
+👨💻 Code Commit
+⬇️
+⚙️ Build
+⬇️
+🧪 Automated Tests
+⬇️
+📦 Package
+⬇️
+🚀 Deploy
+⬇️
+🔵🟢 Blue-Green OR 🐤 Canary
+⬇️
+📡 Monitor
+⬇️
+📊 Evaluate
+⬇️
+✅ Continue or 🔄 Rollback</p>
+<p>🎯 The Bottom Line
+Blue-Green and Canary deployments solve the same fundamental problem:
+How do we release new software while reducing production risk?
+Think of it this way:
+🔵🟢 Blue-Green says:
+&ldquo;Prepare the new stage, test it, then switch the audience over.&rdquo;
+🐤 Canary says:
+&ldquo;Let a small audience experience the new performance first, observe the results, then gradually invite everyone else.&rdquo;
+Neither strategy is automatically better.
+The right choice depends on your architecture, infrastructure cost, monitoring maturity, risk tolerance, and release requirements.
+Because modern DevOps isn’t just about deploying faster.
+🚀 It’s about releasing progressively, observing carefully, and recovering confidently when something goes wrong.
+💬 Which deployment strategy do you prefer—Blue-Green or Canary? And why? 👇</p>
+
+		</div>
+	  </div>
+	
+	  <div class="h-entry">
+		
+
+		<a href="https://omololuakapo.com/2026/11/24/093406.html" class="u-url"><time class="dt-published" datetime="2026-11-24 09:34:06 -0600">Nov 24, 2026</time></a>
+
+		<div class="e-content">
+			 <p>🚀 Blue-Green vs. Canary Deployments Explained</p>
+<p>Ever wondered how companies release new software without disrupting thousands or millions of users? You&rsquo;re not alone. Deploying a new version directly to everyone can be risky.</p>
+<p>Here’s a simple way to understand two popular deployment strategies:</p>
+<p>🎭 Think of releasing software like introducing a new performance at a large theatre.</p>
+<p>You can either prepare an entirely new stage and switch everyone over at once or let a small audience experience the new performance first. That’s the basic difference between Blue-Green and Canary deployments.</p>
+<p>🔵🟢 1️⃣ Blue-Green Deployment: Two Identical Stages</p>
+<p>Imagine your theatre has two identical stages.
+🔵 Blue Stage — The current production version
+🟢 Green Stage — The new application version
+While customers continue watching the performance on the Blue stage, your team prepares and tests the new version on Green.</p>
+<p>Once Green is ready:</p>
+<p>➡️ Traffic switches from Blue to Green.
+The new version becomes production.</p>
+<p>🔄 2️⃣ What If Something Goes Wrong?</p>
+<p>Suppose the Green performance begins and immediately experiences problems. Instead of trying to repair everything while the audience waits&hellip;</p>
+<p>↩️ Send everyone back to the Blue stage. In technology terms:</p>
+<p>🔵 Version 1 remains available.
+🟢 Version 2 is deployed separately.
+🚦 Traffic moves to Version 2.
+🚨 A problem appears.
+↩️ Traffic returns to Version 1.</p>
+<p>That&rsquo;s one of the biggest advantages of Blue-Green deployment:
+⚡ Fast rollback.</p>
+<p>🐤 3️⃣ Canary Deployment: Start With a Small Audience</p>
+<p>Canary deployment takes a different approach. Imagine introducing your new theatre performance to only 5% of the audience first.
+You watch carefully.
+Are they enjoying it?
+Are there technical problems?
+Is everything performing as expected?</p>
+<p>If everything looks good:</p>
+<p>5% → 10% → 25% → 50% → 100%
+Instead of switching everyone at once, traffic moves gradually to the new version.</p>
+<p>📊 4️⃣ Monitoring Makes Canary Deployments Powerful</p>
+<p>Canary deployments depend heavily on monitoring. Imagine theatre managers watching:</p>
+<p>😊 Audience satisfaction
+🚪 People leaving early
+🎤 Sound problems
+⏱️ Performance delays
+DevOps teams do something similar.</p>
+<p>They monitor:</p>
+<p>📈 Error rates
+⏱️ Response times
+🔥 CPU and memory usage
+🌐 Request throughput
+❌ Failed transactions</p>
+<p>Tools such as Prometheus and Grafana can provide this visibility:</p>
+<p>📡 Prometheus collects the signals.
+📊 Grafana helps teams visualize what is happening.
+If the metrics deteriorate, the rollout can be stopped before everyone is affected.</p>
+<p>⚖️ 5️⃣ The Key Difference</p>
+<p>The difference is really about how traffic reaches the new version.
+🔵🟢 Blue-Green
+Prepare two environments.</p>
+<p>Then:
+Blue 100% → Green 100%</p>
+<p>Think:
+💡 Switch
+🐤 Canary
+Run both versions while gradually shifting traffic.</p>
+<p>For example:
+5% → 25% → 50% → 100%</p>
+<p>Think:
+💡 Gradual rollout</p>
+<p>🛡️ 6️⃣ How They Reduce Deployment Risk</p>
+<p>Imagine releasing a faulty application directly to one million users.
+💥 One bad deployment could affect everyone. Canary reduces the blast radius by exposing only a small percentage of users initially. Blue-Green reduces recovery time because the previous environment can remain available for rapid traffic switching. Both strategies reduce risk but in different ways.</p>
+<p>💰 7️⃣ There Are Trade-Offs</p>
+<p>Neither strategy is perfect.
+🔵🟢 Blue-Green</p>
+<p>Advantages:</p>
+<p>✅ Simple traffic switching
+✅ Fast rollback
+✅ Clear environment separation</p>
+<p>Challenges:</p>
+<p>⚠️ Two environments may temporarily increase infrastructure costs.
+⚠️ Database changes require careful planning.</p>
+<p>🐤 Canary
+Advantages:</p>
+<p>✅ Smaller blast radius
+✅ Real-world validation
+✅ Gradual risk exposure</p>
+<p>Challenges:</p>
+<p>⚠️ More sophisticated routing
+⚠️ Strong monitoring is essential
+⚠️ Multiple versions may run simultaneously.</p>
+<p>To be contd. &raquo;&gt;Part 2</p>
+
+		</div>
+	  </div>
+	
+	  <div class="h-entry">
+		
 
 		<a href="https://omololuakapo.com/2026/11/24/013242.html" class="u-url"><time class="dt-published" datetime="2026-11-24 01:32:42 -0600">Nov 24, 2026</time></a>
 
@@ -338,7 +547,7 @@ A production deployment might therefore require:
 <p>🔐 REGISTRY_PASSWORD</p>
 <p>Your repository contains the reference to the secret, not the actual credential.</p>
 <p>To be contd. »&gt;Part 4</p>
-<img src="uploads/2026/c455b40572.png">
+<img src="https://eu.uploads.micro.blog/275033/2026/c455b40572.png">
 
 		</div>
 	  </div>
@@ -348,7 +557,7 @@ A production deployment might therefore require:
 			<h1><a href="https://omololuakapo.com/2026/09/05/how-to-handle-secrets-and.html">🔐 How to Handle Secrets and Credentials in CI/CD Part 2</a></h1>
 		
 
-		<a href="https://omololuakapo.com/2026/09/05/how-to-handle-secrets-and.html" class="u-url"><time class="dt-published" datetime="2026-09-05 18:02:51 -0600">Sep 5, 2026</time></a>
+		<a href="https://omololuakapo.com/2026/09/05/how-to-handle-secrets-and.html" class="u-url"><time class="dt-published" datetime="2026-09-05 17:02:51 -0700">Sep 5, 2026</time></a>
 
 		<div class="e-content">
 			 <h3 id="-5-follow-the-principle-of-least-privilege">👤 5️⃣ Follow the Principle of Least Privilege</h3>
@@ -489,7 +698,7 @@ A production deployment might therefore require:
 <p>Instead of writing a password directly into your pipeline, you reference the stored secret.</p>
 <p>The pipeline knows where to retrieve it without exposing the actual value in your source code.</p>
 <h4 id="to-be-contd-part-2">To be contd. »&gt;Part 2</h4>
-<img src="uploads/2026/how-to-handle-secrets-and-credentials-in-cicd-1.png">
+<img src="https://eu.uploads.micro.blog/275033/2026/how-to-handle-secrets-and-credentials-in-cicd-1.png">
 
 		</div>
 	  </div>
