@@ -24,113 +24,55 @@
 	
 	  <div class="h-entry">
 		
-			<h1><a href="https://omololuakapo.com/2026/11/25/093138.html">Blue-Green vs Canary Deployments Explained Part 2</a></h1>
-		
 
-		<a href="https://omololuakapo.com/2026/11/25/093138.html" class="u-url"><time class="dt-published" datetime="2026-11-25 09:31:38 -0600">Nov 25, 2026</time></a>
+		<a href="https://omololuakapo.com/2026/11/26/111442.html" class="u-url"><time class="dt-published" datetime="2026-11-26 11:14:42 -0700">Nov 26, 2026</time></a>
 
 		<div class="e-content">
-			 <p>Blue-Green vs. Canary Deployments Explained Part 2
-☸️ 8️⃣ Kubernetes Deployment Example
-Let’s make this practical.
-Imagine you have a web application running in Kubernetes with 10 Pods.
-You want to release Version 2 without disrupting users.</p>
-<p>🔵🟢 Blue-Green with Kubernetes
-You run two separate Deployments:
-🔵 app-blue → Version 1
-🟢 app-green → Version 2
-Both can run at the same time.
-A Kubernetes Service controls which Deployment receives user traffic.
-Initially:
-Service → Blue (v1)
-After testing Green:
-Service → Green (v2)
-If something goes wrong?
-↩️ Change the Service selector back to Blue.
-That gives you a fast rollback without rebuilding the old version.</p>
-<p>🐤 Canary with Kubernetes
-Now imagine you want to expose only a small percentage of users to Version 2.
-You could run:
-🔵 9 Pods on Version 1
-🟢 1 Pod on Version 2
-That means roughly 10% of application capacity is running the new version.
-You monitor:
-📊 Error rates
-⏱️ Latency
-🔥 CPU and memory
-❌ Failed requests
-If everything looks healthy, gradually increase Version 2:
-10% → 25% → 50% → 100%
-If the metrics worsen:
-🛑 Stop the rollout.
-🔄 Reduce Version 2 replicas.
-✅ Keep Version 1 serving users.</p>
-<p>🎯 Kubernetes Makes the Strategy Practical
-Kubernetes provides the building blocks:
-☸️ Deployments manage application versions and replicas.
-📦 Pods run the actual containers.
-🌐 Services route traffic to Pods.
-🏷️ Labels and selectors determine which Pods receive traffic.
-📊 Prometheus and Grafana help monitor the rollout.
-So the deployment flow becomes:
-CI/CD Pipeline
-⬇️
-🐳 Build Container Image
-⬇️
-☸️ Deploy New Kubernetes Version
-⬇️
-🚦 Shift Traffic Gradually or Completely
-⬇️
-📡 Monitor
-⬇️
-✅ Continue Rollout
-or
-🔄 Roll Back
-The key idea is simple:
-Kubernetes gives you the infrastructure controls.
-Blue-Green and Canary define how you use those controls to reduce deployment risk.</p>
-<p>🤔 Which Strategy Should You Choose?
-Choose Blue-Green when:
-🔵 You want predictable environment switching.
-🔄 Rapid rollback is critical.
-🏗️ You can maintain parallel environments.
-Choose Canary when:
-🐤 You want gradual exposure.
-📊 You have strong monitoring.
-👥 You want to validate releases with real users before full rollout.
-For some systems, teams can even combine ideas from both approaches.</p>
-<p>🔄 Where They Fit in CI/CD
-A modern deployment pipeline might look like:
-👨💻 Code Commit
-⬇️
-⚙️ Build
-⬇️
-🧪 Automated Tests
-⬇️
-📦 Package
-⬇️
-🚀 Deploy
-⬇️
-🔵🟢 Blue-Green OR 🐤 Canary
-⬇️
-📡 Monitor
-⬇️
-📊 Evaluate
-⬇️
-✅ Continue or 🔄 Rollback</p>
-<p>🎯 The Bottom Line
-Blue-Green and Canary deployments solve the same fundamental problem:
-How do we release new software while reducing production risk?
-Think of it this way:
-🔵🟢 Blue-Green says:
-&ldquo;Prepare the new stage, test it, then switch the audience over.&rdquo;
-🐤 Canary says:
-&ldquo;Let a small audience experience the new performance first, observe the results, then gradually invite everyone else.&rdquo;
-Neither strategy is automatically better.
-The right choice depends on your architecture, infrastructure cost, monitoring maturity, risk tolerance, and release requirements.
-Because modern DevOps isn’t just about deploying faster.
-🚀 It’s about releasing progressively, observing carefully, and recovering confidently when something goes wrong.
-💬 Which deployment strategy do you prefer—Blue-Green or Canary? And why? 👇</p>
+			 <h2 id="-the-role-of-docker-and-kubernetes-in-cicd-part-1">🐳 The Role of Docker and Kubernetes in CI/CD Part 1</h2>
+<p>Ever wondered why Docker and Kubernetes are mentioned together in almost every DevOps conversation? You’re not alone.</p>
+<p>Here’s a simple way to understand their roles:</p>
+<h3 id="-think-of-cicd-like-running-a-nationwide-food-delivery-business">🍽️ Think of CI/CD like running a nationwide food delivery business.</h3>
+<p>You don’t just need great chefs—you also need reliable packaging and an efficient delivery system. That’s exactly where Docker and Kubernetes come in.</p>
+<h3 id="-1-docker-is-the-food-container">📦 1️⃣ Docker Is the Food Container</h3>
+<p>Imagine preparing a delicious meal. Before it can be delivered, it needs secure packaging. That’s Docker’s job.</p>
+<p>Docker packages your application with everything it needs to run:</p>
+<p>✅ Code</p>
+<p>✅ Libraries</p>
+<p>✅ Dependencies</p>
+<p>✅ Runtime</p>
+<p>Wherever the container goes, the application behaves the same.</p>
+<p>💡 No more “It worked on my machine.”</p>
+<h3 id="-2-kubernetes-is-the-delivery-fleet-manager">🚚 2️⃣ Kubernetes Is the Delivery Fleet Manager</h3>
+<p>Now imagine thousands of food orders arriving every minute.</p>
+<p>Who decides:</p>
+<p>🚛 Which driver gets each order?</p>
+<p>📍 Which restaurant prepares it?</p>
+<p>🔄 What happens if a driver breaks down?</p>
+<p>That’s Kubernetes. It automatically:</p>
+<p>✔️ Deploys containers</p>
+<p>✔️ Scales applications</p>
+<p>✔️ Replaces failed containers</p>
+<p>✔️ Balances incoming traffic</p>
+<p>It keeps the entire delivery network running smoothly.</p>
+<h3 id="-3-cicd-is-the-restaurant-kitchen">⚙️ 3️⃣ CI/CD Is the Restaurant Kitchen</h3>
+<p>The CI/CD pipeline prepares every meal.</p>
+<p>It:</p>
+<p>👨‍🍳 Builds the application</p>
+<p>🧪 Tests the code</p>
+<p>📦 Packages it into Docker containers</p>
+<p>🚀 Hands it over to Kubernetes for delivery</p>
+<p>Each system has a unique responsibility.</p>
+<h3 id="-4-they-work-better-together">🔄 4️⃣ They Work Better Together</h3>
+<p>Imagine delivering food without containers.</p>
+<p>🍲 Meals would spill everywhere.</p>
+<p>Now imagine having perfectly packaged meals but no delivery drivers.</p>
+<p>🚫 Customers still wouldn’t receive their orders.</p>
+<p>CI/CD, Docker, and Kubernetes complement each other:</p>
+<p>✅ CI/CD builds software</p>
+<p>🐳 Docker packages software</p>
+<p>☸️ Kubernetes delivers and manages software</p>
+<p>Together, they create a complete software delivery system.</p>
+<p>To be contd. &raquo;&gt;Part 2</p>
 
 		</div>
 	  </div>
@@ -138,7 +80,225 @@ Because modern DevOps isn’t just about deploying faster.
 	  <div class="h-entry">
 		
 
-		<a href="https://omololuakapo.com/2026/11/24/093406.html" class="u-url"><time class="dt-published" datetime="2026-11-24 09:34:06 -0600">Nov 24, 2026</time></a>
+		<a href="https://omololuakapo.com/2026/11/26/continuous-deployment-vs-continuous-delivery.html" class="u-url"><time class="dt-published" datetime="2026-11-26 01:54:38 -0700">Nov 26, 2026</time></a>
+
+		<div class="e-content">
+			 <h2 id="-continuous-deployment-vs-continuous-delivery-key-differences">🚀 Continuous Deployment vs. Continuous Delivery: Key Differences</h2>
+<p>Continuous Delivery and Continuous Deployment sound almost identical. Many teams use the two terms interchangeably.</p>
+<p>They are not the same thing. The difference is one word, and that one word changes who decides when your code reaches real users.</p>
+<p>Here is a simple way to think about it, using the factory from <a href="https://omololuakapo.com/2026/11/24/013242.html">this article</a>:</p>
+<h3 id="-delivery-means-the-product-is-boxed-and-ready-on-the-shelf-deployment-means-the-truck-has-left-the-building">🏭 Delivery means the product is boxed and ready on the shelf. Deployment means the truck has left the building.</h3>
+<p>Both need a good factory. Only one of them ships without anyone pressing a button.</p>
+<hr>
+<h3 id="1-what-continuous-delivery-means">1️⃣ What Continuous Delivery Means</h3>
+<p>In Continuous Delivery, every change that passes your tests is ready to release to production at any time.</p>
+<p>The code is built, tested, and packaged. The release is ready. A human still makes the final call on when it goes out.</p>
+<p>That final call is usually a business decision, not a technical one. Maybe you want to wait for a launch window, a marketing announcement, or a quieter time of day.</p>
+<p>Delivery answers this question: &ldquo;Could we ship right now if we wanted to?&rdquo;</p>
+<p>If the answer is yes, every time, you have Continuous Delivery.</p>
+<h3 id="2-what-continuous-deployment-means">2️⃣ What Continuous Deployment Means</h3>
+<p>In Continuous Deployment, every change that passes your tests goes to production automatically. There is no manual release step and no deploy button to press.</p>
+<p>A developer merges a change, the pipeline runs, the tests pass, and users get the new version. No one has to approve that specific release, because the pipeline itself is the approval.</p>
+<p>Deployment answers a different question: &ldquo;Did it ship already?&rdquo;</p>
+<p>If the answer is yes, automatically, you have Continuous Deployment.</p>
+<hr>
+<h3 id="-the-two-side-by-side">📊 The Two Side by Side</h3>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Continuous Delivery</th>
+<th>Continuous Deployment</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Who decides to ship</td>
+<td>A person, at a chosen time</td>
+<td>The pipeline, automatically</td>
+</tr>
+<tr>
+<td>When code reaches users</td>
+<td>When the team chooses</td>
+<td>As soon as tests pass</td>
+</tr>
+<tr>
+<td>Manual step</td>
+<td>Yes, one final approval</td>
+<td>No, fully automated</td>
+</tr>
+<tr>
+<td>Speed</td>
+<td>Fast, on your schedule</td>
+<td>Fastest, on every merge</td>
+</tr>
+<tr>
+<td>Risk if tests are weak</td>
+<td>A bad release waits for a human to catch it</td>
+<td>A bad release ships on its own</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h3 id="3-the-key-differences-in-plain-terms">3️⃣ The Key Differences, in Plain Terms</h3>
+<p><strong>Who holds the button.</strong> Delivery keeps a human in the loop for the final release. Deployment hands that decision to the pipeline.</p>
+<p><strong>When users see the change.</strong> With delivery, a change can sit ready for hours or days before it ships. With deployment, it ships in minutes.</p>
+<p><strong>How much you must trust your tests.</strong> Deployment only works when your automated tests are strong enough to be the gatekeeper. If a bug can slip past your tests, deployment will ship that bug just as fast as it ships a fix. Delivery gives you a human safety net. Deployment does not.</p>
+<p><strong>How rollbacks work.</strong> Both need a fast way back, <a href="https://omololuakapo.com/2026/11/24/013242.html">as described in this article</a>. With deployment, rollbacks happen more often, because releases happen more often, so the rollback path has to be automatic too.</p>
+<p><strong>What the team feels.</strong> Delivery feels controlled. Deployment feels fast. Both are good feelings, but only if the team trusts the pipeline behind them.</p>
+<h3 id="4-they-are-not-rivals">4️⃣ They Are Not Rivals</h3>
+<p>Continuous Deployment is not a replacement for Continuous Delivery. It is built on top of it.</p>
+<p>You cannot do deployment well until you can do delivery well. If every change is not reliably releasable, automating the release only automates the mess.</p>
+<p>Think of it as a ladder:</p>
+<p>🥾 Step 1: Automate your builds and tests.</p>
+<p>📦 Step 2: Reach Continuous Delivery, where every change is ready to ship.</p>
+<p>🚀 Step 3: Add Continuous Deployment, where ready changes ship on their own.</p>
+<p>Skipping step 2 is how teams end up shipping broken code at machine speed.</p>
+<h3 id="5-which-one-should-your-team-choose">5️⃣ Which One Should Your Team Choose?</h3>
+<p>Ask these three questions:</p>
+<p>🎯 <strong>How confident are you in your tests?</strong> If the honest answer is &ldquo;not very,&rdquo; start with delivery and strengthen the tests first.</p>
+<p>⏰ <strong>How often do you need to ship?</strong> A team that ships once a week may be happy with delivery. A team that ships many times a day usually needs deployment.</p>
+<p>🛡️ <strong>How fast can you roll back?</strong> If a rollback takes an hour of manual work, deployment will hurt. If it takes one click, or happens automatically, deployment is safe to try.</p>
+<p>There is no wrong answer here. Many strong teams stay on Continuous Delivery on purpose, because they want a human to choose the release moment. Others move to Continuous Deployment because their tests and monitoring earn that trust.</p>
+<p>The mistake is not choosing one or the other. The mistake is claiming you do one while actually doing neither: changes that are not tested, not releasable, and shipped by hand on a Friday afternoon.</p>
+<hr>
+<h3 id="-delivery-vs-deployment-checklist">✅ Delivery vs. Deployment Checklist</h3>
+<p>Before you call your pipeline ready, ask:</p>
+<p>✅ Is every change that passes tests ready to release?</p>
+<p>✅ Is the release decision a clear, deliberate step, or an accident?</p>
+<p>✅ Are your tests strong enough to be the only gatekeeper?</p>
+<p>✅ Can you roll back quickly, without manual heroics?</p>
+<p>✅ Does the whole team know which model you use, and why?</p>
+<h3 id="-the-bottom-line">🎯 The Bottom Line</h3>
+<p>Continuous Delivery means you can ship at any time.</p>
+<p>Continuous Deployment means you do ship, every time the tests pass.</p>
+<p>🏭 Delivery is the boxed product on the shelf.</p>
+<p>🚚 Deployment is the truck leaving the building.</p>
+<p>🧪 And neither one works without the discipline from <a href="https://omololuakapo.com/2026/11/24/013242.html">this article</a>: build once, test at every stage, and always keep a way back.</p>
+<p>💬 Which model does your team use today, delivery or deployment, and what would it take to earn the trust to move to the next step? 👇</p>
+<p>#DevOps #CICD #ContinuousDelivery #ContinuousDeployment #CloudNative #DevOps #GitOps #SRE #CloudComputing</p>
+<p><img src="https://omololuakapo.com/uploads/2026/2026-11-26-article-35-diagram.png" alt=""></p>
+
+		</div>
+	  </div>
+	
+	  <div class="h-entry">
+		
+			<h1><a href="https://omololuakapo.com/2026/11/25/093138.html">Blue-Green vs Canary Deployments Explained Part 2</a></h1>
+		
+
+		<a href="https://omololuakapo.com/2026/11/25/093138.html" class="u-url"><time class="dt-published" datetime="2026-11-25 09:31:38 -0600">Nov 25, 2026</time></a>
+
+		<div class="e-content">
+			 <p>Blue-Green vs. Canary Deployments Explained Part 2</p>
+<p>☸️ 8️⃣ Kubernetes Deployment Example</p>
+<p>Let’s make this practical.
+Imagine you have a web application running in Kubernetes with 10 Pods.
+You want to release Version 2 without disrupting users.</p>
+<p>🔵🟢 Blue-Green with Kubernetes</p>
+<p>You run two separate Deployments:</p>
+<p>🔵 app-blue → Version 1</p>
+<p>🟢 app-green → Version 2</p>
+<p>Both can run at the same time.</p>
+<p>A Kubernetes Service controls which Deployment receives user traffic.
+Initially:
+Service → Blue (v1)
+After testing Green:
+Service → Green (v2)
+If something goes wrong?</p>
+<p>↩️ Change the Service selector back to Blue.</p>
+<p>That gives you a fast rollback without rebuilding the old version.</p>
+<p>🐤 Canary with Kubernetes</p>
+<p>Now imagine you want to expose only a small percentage of users to Version 2.</p>
+<p>You could run:</p>
+<p>🔵 9 Pods on Version 1</p>
+<p>🟢 1 Pod on Version 2</p>
+<p>That means roughly 10% of application capacity is running the new version.</p>
+<p>You monitor:</p>
+<p>📊 Error rates</p>
+<p>⏱️ Latency</p>
+<p>🔥 CPU and memory</p>
+<p>❌ Failed requests</p>
+<p>If everything looks healthy, gradually increase Version 2:
+10% → 25% → 50% → 100%</p>
+<p>If the metrics worsen:</p>
+<p>🛑 Stop the rollout.</p>
+<p>🔄 Reduce Version 2 replicas.</p>
+<p>✅ Keep Version 1 serving users.</p>
+<p>🎯 Kubernetes Makes the Strategy Practical</p>
+<p>Kubernetes provides the building blocks:</p>
+<p>☸️ Deployments manage application versions and replicas.</p>
+<p>📦 Pods run the actual containers.</p>
+<p>🌐 Services route traffic to Pods.</p>
+<p>🏷️ Labels and selectors determine which Pods receive traffic.</p>
+<p>📊 Prometheus and Grafana help monitor the rollout.</p>
+<p>So the deployment flow becomes:</p>
+<p>CI/CD Pipeline</p>
+<p>⬇️</p>
+<p>🐳 Build Container Image</p>
+<p>⬇️</p>
+<p>☸️ Deploy New Kubernetes Version</p>
+<p>⬇️</p>
+<p>🚦 Shift Traffic Gradually or Completely</p>
+<p>⬇️</p>
+<p>📡 Monitor</p>
+<p>⬇️</p>
+<p>✅ Continue Rollout</p>
+<p>or</p>
+<p>🔄 Roll Back</p>
+<p>The key idea is simple:
+Kubernetes gives you the infrastructure controls.
+Blue-Green and Canary define how you use those controls to reduce deployment risk.</p>
+<p>🤔 Which Strategy Should You Choose?</p>
+<p>Choose Blue-Green when:</p>
+<p>🔵 You want predictable environment switching.</p>
+<p>🔄 Rapid rollback is critical.</p>
+<p>🏗️ You can maintain parallel environments.</p>
+<p>Choose Canary when:</p>
+<p>🐤 You want gradual exposure.</p>
+<p>📊 You have strong monitoring.</p>
+<p>👥 You want to validate releases with real users before full rollout.</p>
+<p>For some systems, teams can even combine ideas from both approaches.</p>
+<p>🔄 Where They Fit in CI/CD</p>
+<p>A modern deployment pipeline might look like:</p>
+<p>👨‍💻 Code Commit</p>
+<p>⬇️</p>
+<p>⚙️ Build</p>
+<p>⬇️</p>
+<p>🧪 Automated Tests</p>
+<p>⬇️</p>
+<p>📦 Package</p>
+<p>⬇️</p>
+<p>🚀 Deploy</p>
+<p>⬇️</p>
+<p>🔵🟢 Blue-Green OR 🐤 Canary</p>
+<p>⬇️</p>
+<p>📡 Monitor</p>
+<p>⬇️</p>
+<p>📊 Evaluate</p>
+<p>⬇️</p>
+<p>✅ Continue or 🔄 Rollback</p>
+<p>🎯 The Bottom Line</p>
+<p>Blue-Green and Canary deployments solve the same fundamental problem:
+How do we release new software while reducing production risk?</p>
+<p>Think of it this way:</p>
+<p>🔵🟢 Blue-Green says:
+“Prepare the new stage, test it, then switch the audience over.”</p>
+<p>🐤 Canary says:
+“Let a small audience experience the new performance first, observe the results, then gradually invite everyone else.”</p>
+<p>Neither strategy is automatically better.
+The right choice depends on your architecture, infrastructure cost, monitoring maturity, risk tolerance, and release requirements.</p>
+<p>Because modern DevOps isn’t just about deploying faster.</p>
+<p>🚀 It’s about releasing progressively, observing carefully, and recovering confidently when something goes wrong.</p>
+<p>💬 Which deployment strategy do you prefer—Blue-Green or Canary? And why? 👇</p>
+
+		</div>
+	  </div>
+	
+	  <div class="h-entry">
+		
+
+		<a href="https://omololuakapo.com/2026/11/24/093406.html" class="u-url"><time class="dt-published" datetime="2026-11-24 08:34:06 -0700">Nov 24, 2026</time></a>
 
 		<div class="e-content">
 			 <p>🚀 Blue-Green vs. Canary Deployments Explained</p>
@@ -147,21 +307,21 @@ Because modern DevOps isn’t just about deploying faster.
 <p>🎭 Think of releasing software like introducing a new performance at a large theatre.</p>
 <p>You can either prepare an entirely new stage and switch everyone over at once or let a small audience experience the new performance first. That’s the basic difference between Blue-Green and Canary deployments.</p>
 <p>🔵🟢 1️⃣ Blue-Green Deployment: Two Identical Stages</p>
-<p>Imagine your theatre has two identical stages.
-🔵 Blue Stage — The current production version
-🟢 Green Stage — The new application version
-While customers continue watching the performance on the Blue stage, your team prepares and tests the new version on Green.</p>
+<p>Imagine your theatre has two identical stages.</p>
+<p>🔵 Blue Stage — The current production version</p>
+<p>🟢 Green Stage — The new application version</p>
+<p>While customers continue watching the performance on the Blue stage, your team prepares and tests the new version on Green.</p>
 <p>Once Green is ready:</p>
 <p>➡️ Traffic switches from Blue to Green.
 The new version becomes production.</p>
 <p>🔄 2️⃣ What If Something Goes Wrong?</p>
 <p>Suppose the Green performance begins and immediately experiences problems. Instead of trying to repair everything while the audience waits&hellip;</p>
 <p>↩️ Send everyone back to the Blue stage. In technology terms:</p>
-<p>🔵 Version 1 remains available.
-🟢 Version 2 is deployed separately.
-🚦 Traffic moves to Version 2.
-🚨 A problem appears.
-↩️ Traffic returns to Version 1.</p>
+<p>🔵 Version 1 remains available.</p>
+<p>🟢 Version 2 is deployed separately.</p>
+<p>🚦 Traffic moves to Version 2.</p>
+<p>🚨 A problem appears.</p>
+<p>↩️ Traffic returns to Version 1.</p>
 <p>That&rsquo;s one of the biggest advantages of Blue-Green deployment:
 ⚡ Fast rollback.</p>
 <p>🐤 3️⃣ Canary Deployment: Start With a Small Audience</p>
@@ -175,57 +335,57 @@ Is everything performing as expected?</p>
 Instead of switching everyone at once, traffic moves gradually to the new version.</p>
 <p>📊 4️⃣ Monitoring Makes Canary Deployments Powerful</p>
 <p>Canary deployments depend heavily on monitoring. Imagine theatre managers watching:</p>
-<p>😊 Audience satisfaction
-🚪 People leaving early
-🎤 Sound problems
-⏱️ Performance delays
-DevOps teams do something similar.</p>
+<p>😊 Audience satisfaction</p>
+<p>🚪 People leaving early</p>
+<p>🎤 Sound problems</p>
+<p>⏱️ Performance delays</p>
+<p>DevOps teams do something similar.</p>
 <p>They monitor:</p>
-<p>📈 Error rates
-⏱️ Response times
-🔥 CPU and memory usage
-🌐 Request throughput
-❌ Failed transactions</p>
+<p>📈 Error rates</p>
+<p>⏱️ Response times</p>
+<p>🔥 CPU and memory usage</p>
+<p>🌐 Request throughput</p>
+<p>❌ Failed transactions</p>
 <p>Tools such as Prometheus and Grafana can provide this visibility:</p>
-<p>📡 Prometheus collects the signals.
-📊 Grafana helps teams visualize what is happening.
-If the metrics deteriorate, the rollout can be stopped before everyone is affected.</p>
+<p>📡 Prometheus collects the signals.</p>
+<p>📊 Grafana helps teams visualize what is happening.</p>
+<p>If the metrics deteriorate, the rollout can be stopped before everyone is affected.</p>
 <p>⚖️ 5️⃣ The Key Difference</p>
-<p>The difference is really about how traffic reaches the new version.
-🔵🟢 Blue-Green
+<p>The difference is really about how traffic reaches the new version.</p>
+<p>🔵🟢 Blue-Green
 Prepare two environments.</p>
 <p>Then:
 Blue 100% → Green 100%</p>
-<p>Think:
-💡 Switch
-🐤 Canary
+<p>Think:</p>
+<p>💡 Switch</p>
+<p>🐤 Canary
 Run both versions while gradually shifting traffic.</p>
 <p>For example:
 5% → 25% → 50% → 100%</p>
-<p>Think:
-💡 Gradual rollout</p>
+<p>Think:</p>
+<p>💡 Gradual rollout</p>
 <p>🛡️ 6️⃣ How They Reduce Deployment Risk</p>
 <p>Imagine releasing a faulty application directly to one million users.
 💥 One bad deployment could affect everyone. Canary reduces the blast radius by exposing only a small percentage of users initially. Blue-Green reduces recovery time because the previous environment can remain available for rapid traffic switching. Both strategies reduce risk but in different ways.</p>
 <p>💰 7️⃣ There Are Trade-Offs</p>
-<p>Neither strategy is perfect.
-🔵🟢 Blue-Green</p>
+<p>Neither strategy is perfect.</p>
+<p>🔵🟢 Blue-Green</p>
 <p>Advantages:</p>
-<p>✅ Simple traffic switching
-✅ Fast rollback
-✅ Clear environment separation</p>
+<p>✅ Simple traffic switching</p>
+<p>✅ Fast rollback</p>
+<p>✅ Clear environment separation</p>
 <p>Challenges:</p>
-<p>⚠️ Two environments may temporarily increase infrastructure costs.
-⚠️ Database changes require careful planning.</p>
-<p>🐤 Canary
-Advantages:</p>
-<p>✅ Smaller blast radius
-✅ Real-world validation
-✅ Gradual risk exposure</p>
+<p>⚠️ Two environments may temporarily increase infrastructure costs.</p>
+<p>⚠️ Database changes require careful planning.</p>
+<p>🐤 Canary</p>
+<p>Advantages:</p>
+<p>✅ Smaller blast radius</p>
+<p>✅ Real-world validation</p>
+<p>✅ Gradual risk exposure</p>
 <p>Challenges:</p>
-<p>⚠️ More sophisticated routing
-⚠️ Strong monitoring is essential
-⚠️ Multiple versions may run simultaneously.</p>
+<p>⚠️ More sophisticated routing</p>
+<p>⚠️ Strong monitoring is essential</p>
+<p>⚠️ Multiple versions may run simultaneously.</p>
 <p>To be contd. &raquo;&gt;Part 2</p>
 
 		</div>
@@ -234,10 +394,11 @@ Advantages:</p>
 	  <div class="h-entry">
 		
 
-		<a href="https://omololuakapo.com/2026/11/24/013242.html" class="u-url"><time class="dt-published" datetime="2026-11-24 01:32:42 -0600">Nov 24, 2026</time></a>
+		<a href="https://omololuakapo.com/2026/11/24/013242.html" class="u-url"><time class="dt-published" datetime="2026-11-24 00:32:42 -0700">Nov 24, 2026</time></a>
 
 		<div class="e-content">
 			 <h2 id="-cicd-best-practices-for-cloud-native-applications">☁️ CI/CD Best Practices for Cloud-Native Applications</h2>
+<p><img src="https://omololuakapo.com/uploads/2026/2026-11-24-article-34-diagram.png" alt=""></p>
 <p>Cloud-native applications are built to change fast: small services, containers, and frequent releases.</p>
 <p>But speed without discipline creates a different problem: deployments that are hard to repeat, hard to roll back, and hard to trust.</p>
 <p>Here is a simple way to think about it:</p>
@@ -247,19 +408,19 @@ Advantages:</p>
 <hr>
 <h3 id="1-build-once-deploy-everywhere">1️⃣ Build Once, Deploy Everywhere</h3>
 <p>Build your container image once, then promote that same image through development, staging, and production.</p>
-<p>❌ Do not rebuild the image for each environment.
-✅ Do tag the same image, for example <code>myapp:1.2.3</code>, and deploy it everywhere.</p>
+<p>❌ Do not rebuild the image for each environment.</p>
+<p>✅ Do tag the same image, for example <code>myapp:1.2.3</code>, and deploy it everywhere.</p>
 <p>If you rebuild it, you are no longer testing what you will ship.</p>
 <h3 id="2-keep-everything-declarative">2️⃣ Keep Everything Declarative</h3>
 <p>Your infrastructure, your Kubernetes manifests, and your pipeline steps should live in Git.</p>
 <p>That is GitOps in practice:</p>
-<p>👨‍💻 Change the code or config
-⬇️
-📝 Open a pull request
-⬇️
-✅ Review and merge
-⬇️
-🚀 The cluster is updated to match Git</p>
+<p>👨‍💻 Change the code or config</p>
+<p>⬇️</p>
+<p>📝 Open a pull request</p>
+<p>⬇️</p>
+<p>✅ Review and merge</p>
+<p>⬇️</p>
+<p>🚀 The cluster is updated to match Git</p>
 <p>Git becomes the source of truth, not a manual change someone made on a Friday afternoon.</p>
 <h3 id="3-ship-small-ship-often">3️⃣ Ship Small, Ship Often</h3>
 <p>Big releases are big risks.</p>
@@ -268,10 +429,10 @@ Advantages:</p>
 <h3 id="4-automate-tests-at-every-stage">4️⃣ Automate Tests at Every Stage</h3>
 <p>A pipeline without tests is just a fast way to ship bugs.</p>
 <p>Run the right checks at the right stage:</p>
-<p>🧪 Unit tests on every commit
-🔗 Integration tests before staging
-🔒 Security scans before production
-👀 A smoke test after every deployment</p>
+<p>🧪 Unit tests on every commit</p>
+<p>🔗 Integration tests before staging</p>
+<p>🔒 Security scans before production</p>
+<p>👀 A smoke test after every deployment</p>
 <p>If a test fails, the pipeline should stop. That is the point.</p>
 <h3 id="5-keep-environments-as-close-as-possible">5️⃣ Keep Environments as Close as Possible</h3>
 <p>Development, staging, and production should behave the same way.</p>
@@ -281,34 +442,34 @@ Advantages:</p>
 <h3 id="6-make-every-deployment-reversible">6️⃣ Make Every Deployment Reversible</h3>
 <p>Every deployment should have a way back.</p>
 <p>That can be:</p>
-<p>🔄 Rolling back to the previous image
-🚦 A blue-green deployment
-🐤 A canary release to a small group of users first</p>
+<p>🔄 Rolling back to the previous image</p>
+<p>🚦 A blue-green deployment</p>
+<p>🐤 A canary release to a small group of users first</p>
 <p>If you cannot roll back quickly, you are not ready to deploy quickly.</p>
 <h3 id="7-build-security-into-the-pipeline">7️⃣ Build Security Into the Pipeline</h3>
 <p>Security is not a step you add at the end.</p>
-<p>✅ Scan container images for known vulnerabilities
-✅ Store secrets outside your code. See the Secrets in CI/CD series.
-✅ Give the pipeline only the permissions it needs
-✅ Keep credentials short-lived where possible</p>
+<p>✅ Scan container images for known vulnerabilities</p>
+<p>✅ Store secrets outside your code. See the Secrets in CI/CD series.</p>
+<p>✅ Give the pipeline only the permissions it needs</p>
+<p>✅ Keep credentials short-lived where possible</p>
 <p>A fast pipeline that leaks secrets is not a good pipeline.</p>
 <hr>
 <h3 id="-cicd-checklist-for-cloud-native-applications">✅ CI/CD Checklist for Cloud-Native Applications</h3>
 <p>Before you call your pipeline ready, ask:</p>
-<p>✅ Is the same image built once and promoted everywhere?
-✅ Is your infrastructure and config stored in Git?
-✅ Are changes small and deployed often?
-✅ Do automated tests run at every stage?
-✅ Are environments consistent from dev to production?
-✅ Can you roll back quickly?
-✅ Is security scanned in the pipeline, not after it?</p>
+<p>✅ Is the same image built once and promoted everywhere?</p>
+<p>✅ Is your infrastructure and config stored in Git?</p>
+<p>✅ Are changes small and deployed often?</p>
+<p>✅ Do automated tests run at every stage?</p>
+<p>✅ Are environments consistent from dev to production?</p>
+<p>✅ Can you roll back quickly?</p>
+<p>✅ Is security scanned in the pipeline, not after it?</p>
 <h3 id="-the-bottom-line">🎯 The Bottom Line</h3>
 <p>Cloud-native CI/CD is not about deploying faster for its own sake.</p>
 <p>It is about deploying with confidence:</p>
-<p>🏗️ The same build, every time
-📝 The same process, in Git
-🧪 Tests that stop bad changes
-🔄 A way back when things go wrong</p>
+<p>🏗️ The same build, every time</p>
+<p>📝 The same process, in Git</p>
+<p>🧪 Tests that stop bad changes</p>
+<p>🔄 A way back when things go wrong</p>
 <p>Because in DevOps…</p>
 <p>🚀 Automate the deployment, and make the result repeatable, testable, and reversible.</p>
 <p>💬 Which of these practices made the biggest difference on your team: smaller releases, GitOps, or better automated tests? 👇</p>
@@ -322,27 +483,27 @@ Advantages:</p>
 			<h1><a href="https://omololuakapo.com/2026/11/20/093140.html">How to Handle Secrets and Credentials in CI/CD Part 5 — Step 4: Go Further With Short-Lived Cloud Credentials</a></h1>
 		
 
-		<a href="https://omololuakapo.com/2026/11/20/093140.html" class="u-url"><time class="dt-published" datetime="2026-11-20 10:31:40 -0600">Nov 20, 2026</time></a>
+		<a href="https://omololuakapo.com/2026/11/20/093140.html" class="u-url"><time class="dt-published" datetime="2026-11-20 09:31:40 -0700">Nov 20, 2026</time></a>
 
 		<div class="e-content">
-			 <p>🔐 How to Handle Secrets and Credentials in CI/CD Part 5
-⏳ Step 4: Go Further With Short-Lived Cloud Credentials</p>
+			 <p>🔐 How to Handle Secrets and Credentials in CI/CD Part 5</p>
+<p>⏳ Step 4: Go Further With Short-Lived Cloud Credentials</p>
 <p>Storing secrets securely is better than hardcoding them.
 But there&rsquo;s an even stronger approach for many cloud deployments:
 Avoid storing long-lived cloud credentials whenever possible.
 GitHub Actions supports OpenID Connect (OIDC) authentication with major cloud providers.
 Instead of storing a permanent cloud access key:</p>
-<p>GitHub Actions starts
-⬇️
-🪪 GitHub provides an identity token
-⬇️
-☁️ Cloud provider verifies the workflow&rsquo;s identity
-⬇️
-🎟️ Temporary credentials are issued
-⬇️
-🚀 Deployment occurs
-⬇️
-⏳ Credentials expire</p>
+<p>GitHub Actions starts</p>
+<p>⬇️</p>
+<p>🪪 GitHub provides an identity token</p>
+<p>⬇️</p>
+<p>☁️ Cloud provider verifies the workflow&rsquo;s identity</p>
+<p>⬇️</p>
+<p>🎟️ Temporary credentials are issued</p>
+<p>⬇️</p>
+<p>🚀 Deployment occurs</p>
+<p>⬇️</p>
+<p>⏳ Credentials expire</p>
 <p>Think of it like replacing a permanent master key with a temporary access badge that automatically expires after the job is finished.</p>
 <p>🎯 The Security Lesson</p>
 <p>A basic approach is:
@@ -371,13 +532,14 @@ Source Code
 Hardcoded Password 😬
 ↓
 Git Repository</p>
-<p>The principle remains the same:
-🔐 Store secrets outside your code.
-👤 Limit who and what can access them.
-🛡️ Protect production environments.
-⏳ Prefer short-lived credentials where possible.
-🚫 Never print sensitive values into your pipeline logs.</p>
-<p>In modern CI/CD, the best secret is often one your pipeline doesn&rsquo;t have to permanently store at all.</p>
+<p>The principle remains the same:</p>
+<p>🔐 Store secrets outside your code.</p>
+<p>👤 Limit who and what can access them.</p>
+<p>🛡️ Protect production environments.</p>
+<p>⏳ Prefer short-lived credentials where possible.</p>
+<p>🚫 Never print sensitive values into your pipeline logs.</p>
+<p>In modern CI/CD, the best secret is often one your pipeline doesn&rsquo;t have to permanently store at all.
+To be contd. &raquo;Part 6</p>
 <p>#Kubernetes #KubernetesNetworking #DevOps #SRE #CloudComputing #AWS #Azure #CNI #Calico #Cilium #Ingress #ServiceMesh #LinuxNetworking #NetworkEngineering #DevSecOps #CloudNative</p>
 <p><img src="https://eu.uploads.micro.blog/275033/2026/c455b40572.png" alt="How to Handle Secrets and Credentials in CI/CD"></p>
 
@@ -389,7 +551,7 @@ Git Repository</p>
 			<h1><a href="https://omololuakapo.com/2026/11/19/205341.html">How to Handle Secrets and Credentials in CI/CD Part 4 — Step 2: Reference the Secrets in Your Workflow</a></h1>
 		
 
-		<a href="https://omololuakapo.com/2026/11/19/205341.html" class="u-url"><time class="dt-published" datetime="2026-11-19 21:53:41 -0600">Nov 19, 2026</time></a>
+		<a href="https://omololuakapo.com/2026/11/19/205341.html" class="u-url"><time class="dt-published" datetime="2026-11-19 20:53:41 -0700">Nov 19, 2026</time></a>
 
 		<div class="e-content">
 			 <p>🔐 How to Handle Secrets and Credentials in CI/CD Part 4</p>
@@ -429,38 +591,38 @@ runs-on: ubuntu-latest</p>
         https://lnkd.in/gmnRvp-R github.sha }}
 </code></pre>
 <p>Notice what&rsquo;s not in the workflow:</p>
-<p>🚫 Actual username
-🚫 Actual password
-🚫 API key</p>
+<p>🚫 Actual username</p>
+<p>🚫 Actual password</p>
+<p>🚫 API key</p>
 <p>The workflow only contains references such as:</p>
 <p>${{ secrets.REGISTRY_PASSWORD }}</p>
 <p>GitHub retrieves the stored value when the workflow runs.</p>
 <p>🏦 Think of It Like a Bank Vault</p>
 <p>The workflow says:</p>
 <p>&ldquo;I need the registry credential.&rdquo;
-GitHub checks that the workflow has access.
-🔐 The credential is retrieved.
-🐳 Docker authenticates to the registry.
-📦 The image is pushed.
-The credential itself doesn&rsquo;t need to be committed to Git.</p>
+GitHub checks that the workflow has access.</p>
+<p>🔐 The credential is retrieved.</p>
+<p>🐳 Docker authenticates to the registry.</p>
+<p>📦 The image is pushed.</p>
+<p>The credential itself doesn&rsquo;t need to be committed to Git.</p>
 <p>🛡️ Step 3: Protect Production Secrets</p>
 <p>Development and production shouldn&rsquo;t automatically share the same credentials.
 GitHub Environments can help separate them.
 For example:</p>
-<p>🧪 development
-🎭 staging
-🚀 production</p>
+<p>🧪 development</p>
+<p>🎭 staging</p>
+<p>🚀 production</p>
 <p>Your production environment can have its own secrets and additional protection rules.
-A production deployment might therefore require:
-👨‍💻 Code merged
-⬇️
-🧪 Automated tests passed
-⬇️
-🔐 Production environment authorized
-⬇️
-🔑 Production credential accessed
-⬇️
-🚀 Deployment executed</p>
+A production deployment might therefore require:</p>
+<p>👨‍💻 Code merged</p>
+<p>⬇️</p>
+<p>🧪 Automated tests passed</p>
+<p>⬇️</p>
+<p>🔐 Production environment authorized</p>
+<p>⬇️</p>
+<p>🔑 Production credential accessed</p>
+<p>⬇️</p>
+<p>🚀 Deployment executed</p>
 <p>This helps prevent every workflow from automatically gaining access to sensitive production credentials.</p>
 <p>To be contd. »&gt;Part 5</p>
 <p>#Kubernetes #KubernetesNetworking #DevOps #SRE #CloudComputing #AWS #Azure #CNI #Calico #Cilium #Ingress #ServiceMesh #LinuxNetworking #NetworkEngineering #DevSecOps #CloudNative</p>
@@ -640,7 +802,7 @@ A production deployment might therefore require:
 			<h1><a href="https://omololuakapo.com/2026/09/01/how-to-handle-secrets-and.html">🔐 How to Handle Secrets and Credentials in CI/CD</a></h1>
 		
 
-		<a href="https://omololuakapo.com/2026/09/01/how-to-handle-secrets-and.html" class="u-url"><time class="dt-published" datetime="2026-09-01 10:38:58 -0600">Sep 1, 2026</time></a>
+		<a href="https://omololuakapo.com/2026/09/01/how-to-handle-secrets-and.html" class="u-url"><time class="dt-published" datetime="2026-09-01 09:38:58 -0700">Sep 1, 2026</time></a>
 
 		<div class="e-content">
 			 <h3 id="ever-wondered-where-passwords-api-keys-tokens-and-cloud-credentials-should-live-in-a-cicd-pipeline">Ever wondered where passwords, API keys, tokens, and cloud credentials should live in a CI/CD pipeline?</h3>
@@ -893,7 +1055,7 @@ A production deployment might therefore require:
 <p>🚀 The goal isn&rsquo;t just to deploy faster; it&rsquo;s to deploy every service independently, reliably, and confidently.</p>
 <p>💬 What&rsquo;s been your biggest challenge when building CI/CD pipelines for microservices?</p>
 <p>Share your experience below! 👇</p>
-<img src="https://eu.uploads.micro.blog/275033/2026/107b27337b.png">
+<img src="uploads/2026/107b27337b.png">
 
 		</div>
 	  </div>
@@ -950,7 +1112,7 @@ Your CI/CD pipeline should automate:</p>
 <p>✅ End-to-End Tests</p>
 <p>Each layer adds confidence before deployment.</p>
 <p>To be contd. &raquo;&gt;Part 2</p>
-<img src="https://eu.uploads.micro.blog/275033/2026/cicd-for-microservices-what-changes.png">
+<img src="uploads/2026/cicd-for-microservices-what-changes.png">
 
 		</div>
 	  </div>
@@ -1057,7 +1219,7 @@ A fast CI/CD pipeline isn&rsquo;t about rushing software into production. It&rsq
 <p>✅ Performance Tests</p>
 <p>⚡ Developers get faster feedback without sacrificing quality.</p>
 <p>To be contd. &raquo;&gt;Part2</p>
-<img src="https://eu.uploads.micro.blog/275033/2026/how-to-optimize-build-times-in-your-pipeline.png" width="600" height="400" alt="">
+<img src="uploads/2026/how-to-optimize-build-times-in-your-pipeline.png" width="600" height="400" alt="">
 
 		</div>
 	  </div>
@@ -1161,7 +1323,7 @@ Organizations with mature deployment automation often achieve:</p>
 <p>Continuous Deployment says, &ldquo;The tests passed—let&rsquo;s release now.&rdquo;</p>
 <p>Both improve software delivery.</p>
 <p>The right choice depends on how much control versus speed your organization needs. 🚀</p>
-<img src="https://eu.uploads.micro.blog/275033/2026/continuous-deployment-vs.-continuous-delivery-key-differences.png" width="600" height="400" alt="">
+<img src="uploads/2026/continuous-deployment-vs.-continuous-delivery-key-differences.png" width="600" height="400" alt="">
 
 		</div>
 	  </div>
@@ -1268,7 +1430,7 @@ Monitoring &amp; Feedback</p>
 <p>CI/CD best practices ensure they can move fast without sacrificing quality, reliability, or security.</p>
 <p>Because in cloud-native development, success isn&rsquo;t just about deploying more often.</p>
 <p>It&rsquo;s about deploying safely, consistently, and confidently. 🚀</p>
-<img src="https://eu.uploads.micro.blog/275033/2026/cicd-best-practices-for-cloud-native-applications.png" width="600" height="400" alt="">
+<img src="uploads/2026/cicd-best-practices-for-cloud-native-applications.png" width="600" height="400" alt="">
 
 		</div>
 	  </div>
@@ -1394,7 +1556,7 @@ If a temporary token can be used, avoid permanent credentials.</p>
 <p>Use software composition analysis to detect vulnerable packages. Generate a software bill of materials where possible. Pin dependency versions instead of blindly pulling the latest release. Review high-risk packages before introducing them into production systems.</p>
 <p>The goal is not to avoid open source. The goal is to use it with visibility and control.</p>
 <p>To be contd. &raquo;&gt;Part2</p>
-<img src="https://eu.uploads.micro.blog/275033/2026/how-to-secure-your-cicd-pipeline.png" width="600" height="337" alt="">
+<img src="uploads/2026/how-to-secure-your-cicd-pipeline.png" width="600" height="337" alt="">
 
 		</div>
 	  </div>
@@ -1472,7 +1634,7 @@ If a temporary token can be used, avoid permanent credentials.</p>
 <p>By integrating testing into CI/CD pipelines, teams can deliver software more frequently while maintaining quality and reliability.</p>
 <p>In modern software development:</p>
 <p>The faster you release, the more important automated testing becomes. 🚀</p>
-<img src="https://eu.uploads.micro.blog/275033/2026/automating-testing-with-cicd-pipelines.png" width="600" height="400" alt="">
+<img src="uploads/2026/automating-testing-with-cicd-pipelines.png" width="600" height="400" alt="">
 
 		</div>
 	  </div>
@@ -1673,7 +1835,7 @@ Monitor Results</p>
 <p>✔ Often favored in mixed enterprise environments</p>
 <p>&hellip;Which is the winner, Github Actions or Jenkins?</p>
 <p>To be contd. &raquo;&gt;Part2</p>
-<img src="https://eu.uploads.micro.blog/275033/2026/github-actions-vs.-jenkins-which-cicd-tool-wins.png" width="600" height="400" alt="">
+<img src="uploads/2026/github-actions-vs.-jenkins-which-cicd-tool-wins.png" width="600" height="400" alt="">
 
 		</div>
 	  </div>
@@ -1788,7 +1950,7 @@ Monitor Results</p>
 <p>success isn’t just writing code—it’s building a process that ships it well.</p>
 <p>What tool did you use to build your first CI/CD pipeline?</p>
 <p>Share below 👇</p>
-<img src="https://eu.uploads.micro.blog/275033/2026/c9cba31fd6.png">
+<img src="uploads/2026/c9cba31fd6.png">
 
 		</div>
 	  </div>
@@ -1853,7 +2015,7 @@ Monitor Results</p>
 <p>Because in modern development, great software isn’t just built, it’s delivered through a reliable process.</p>
 <p>How do you explain CI/CD pipelines to beginners?</p>
 <p>Share your analogy below 👇</p>
-<img src="https://eu.uploads.micro.blog/275033/2026/cb582d6d0c.png">
+<img src="uploads/2026/cb582d6d0c.png">
 
 		</div>
 	  </div>
@@ -1918,7 +2080,7 @@ With one, teams gain:
 <p>Because in modern development, great software isn’t just built, it’s delivered through a reliable process.</p>
 <p>How do you explain CI/CD pipelines to beginners?</p>
 <p>Share your analogy below 👇</p>
-<img src="https://eu.uploads.micro.blog/275033/2026/cicd-pipeline-explained-tools-steps-and-benefits.png" width="600" height="400" alt="">
+<img src="uploads/2026/cicd-pipeline-explained-tools-steps-and-benefits.png" width="600" height="400" alt="">
 
 		</div>
 	  </div>
@@ -1973,7 +2135,7 @@ With one, teams gain:
 <p>Because in modern development, shipping faster only matters if you ship better.</p>
 <p>How do you explain CI/CD to beginners?</p>
 <p>Share your favorite analogy below 👇</p>
-<img src="https://eu.uploads.micro.blog/275033/2026/what-is-cicd-and-why-its-crucial-for-modern-development.png">
+<img src="uploads/2026/what-is-cicd-and-why-its-crucial-for-modern-development.png">
 
 		</div>
 	  </div>
@@ -2047,7 +2209,7 @@ With one, teams gain:
 <p>Because when systems grow complex, you don’t just need musicians—you need a conductor.</p>
 <p>How do you explain Kubernetes to beginners?</p>
 <p>Share your analogy below 👇</p>
-<img src="https://eu.uploads.micro.blog/275033/2026/66f7245c4e.png" width="600" height="400" alt="">
+<img src="uploads/2026/66f7245c4e.png" width="600" height="400" alt="">
 
 		</div>
 	  </div>
@@ -2070,7 +2232,7 @@ With one, teams gain:
 •	Service Discovery &amp; Load Balancing: Routes traffic to containers using built-in networking and DNS.</p>
 <p>How will you describe Kubernetes from a technical point of view?</p>
 <p>Let’s discuss</p>
-<img src="https://eu.uploads.micro.blog/275033/2026/kubernetes-13042026.png" width="600" height="400" alt="">
+<img src="uploads/2026/kubernetes-13042026.png" width="600" height="400" alt="">
 
 		</div>
 	  </div>
@@ -2126,7 +2288,7 @@ DevOps relies on clear, ongoing communication across roles and teams.</p>
 <hr>
 <p>How does your organization view DevOps, role or mindset?</p>
 <p>Let’s discuss 👇</p>
-<img src="https://eu.uploads.micro.blog/275033/2026/devops-as-a-mindset-not-a-job-title.png">
+<img src="uploads/2026/devops-as-a-mindset-not-a-job-title.png">
 
 		</div>
 	  </div>
@@ -2174,7 +2336,7 @@ DevOps fosters shared ownership, where teams support, not blame each other.</p>
 <p>Because when departments operate like an orchestra, the result isn’t just productivity it’s performance.</p>
 <p>How has DevOps improved collaboration in your organization?</p>
 <p>Share your experience below 👇</p>
-<img src="https://eu.uploads.micro.blog/275033/2026/how-devops-improves-collaboration-across-departments.png">
+<img src="uploads/2026/how-devops-improves-collaboration-across-departments.png">
 
 		</div>
 	  </div>
@@ -2220,7 +2382,7 @@ User feedback helps teams improve the next delivery cycle.</p>
 <p>Because in the end, success isn’t just shipping the product, it’s delivering value consistently.</p>
 <p>How do you explain the DevOps journey to beginners?</p>
 <p>Share your approach below 👇</p>
-<img src="https://eu.uploads.micro.blog/275033/2026/from-code-to-cloud-the-devops-journey-explained.png">
+<img src="uploads/2026/from-code-to-cloud-the-devops-journey-explained.png">
 
 		</div>
 	  </div>
@@ -2273,7 +2435,7 @@ DevOps enables systems to scale, recover, and evolve as demands grow.</p>
 <p>With it, organizations stay alive, responsive, and competitive.</p>
 <p>How has DevOps become essential in your organization?</p>
 <p>Let’s discuss 👇</p>
-<img src="https://eu.uploads.micro.blog/275033/2026/how-devops-became-the-backbone-of-modern-it.png">
+<img src="uploads/2026/how-devops-became-the-backbone-of-modern-it.png">
 
 		</div>
 	  </div>
@@ -2578,7 +2740,7 @@ Faster releases, fewer failures, happier users, and teams that actually enjoy sh
 <p>DevOps doesn’t just speed up delivery — it makes delivery reliable.</p>
 <p>How do you explain DevOps in simple terms?
 Drop your favorite analogy below 👇</p>
-<img src="https://eu.uploads.micro.blog/275033/2026/agile-cicd-devops.jpg">
+<img src="uploads/2026/agile-cicd-devops.jpg">
 
 		</div>
 	  </div>
@@ -2616,7 +2778,7 @@ Teams regularly reflect, learn, and refine how they work.</li>
 Tools help, but culture leads.</p>
 <p>How do you explain DevOps to non-technical audiences?</p>
 <p>Share your favorite simple explanation below 👇</p>
-<img src="https://eu.uploads.micro.blog/275033/2026/7cs-devops.png">
+<img src="uploads/2026/7cs-devops.png">
 
 		</div>
 	  </div>
@@ -2758,7 +2920,7 @@ Organizations that understand — and properly implement — both Agile and DevO
 Agile helps teams build better software.
 DevOps helps teams run better systems.
 In 2025 and beyond, success doesn’t come from choosing one over the other — it comes from mastering how they work together.</p>
-<img src="https://eu.uploads.micro.blog/275033/2026/agilevsdevops-1.jpg">
+<img src="uploads/2026/agilevsdevops-1.jpg">
 
 		</div>
 	  </div>
@@ -2964,7 +3126,7 @@ Core Practices: CI/CD, automation, monitoring
 Main Benefit: Faster, safer, scalable releases</p>
 <p><strong>Agile improves how software is built.</strong></p>
 <p><strong>DevOps improves how software reaches users and stays reliable.</strong></p>
-<img src="https://eu.uploads.micro.blog/275033/2026/agilevsdevops.jpg">
+<img src="uploads/2026/agilevsdevops.jpg">
 
 		</div>
 	  </div>
@@ -3025,7 +3187,7 @@ In 3 months📅, I would have done 240 hours of study toward my AZ-104 Exam whic
 <p>Indeed it is astonishing to see how LinkedIn creates a very good platform for online visibility. This result is very encouraging, now am scheduling post ahead of time to keep the momentum up.</p>
 <p>What are you waiting⏳for, go for it and start posting on LinkedIn for your online🌐💻visibility.</p>
 <p>Celebrate🎉🥳🎊🎁 your wins!</p>
-<img src="https://eu.uploads.micro.blog/275033/2025/linkedin-posts-analytic-in-3days.jpg">
+<img src="uploads/2025/linkedin-posts-analytic-in-3days.jpg">
 
 		</div>
 	  </div>
@@ -3062,7 +3224,7 @@ In 3 months📅, I would have done 240 hours of study toward my AZ-104 Exam whic
 <p>The <strong>brain</strong> 🧠 is the factory</p>
 <p>All the books 📚, information 📋, videos 📹, conversations 🗫, articles 📜, recordings 🗣️🔊are the <strong>input</strong></p>
 <p>All your writing ✍️ or note-taking 📝in your own words is the <strong>output</strong>. Which can be used to create blog posts 📜🌐, emails, videos 🎬, courses, and social media content</p>
-<img src="https://eu.uploads.micro.blog/275033/2025/brain.jpg">
+<img src="uploads/2025/brain.jpg">
 
 		</div>
 	  </div>
@@ -3108,7 +3270,7 @@ In 3 months📅, I would have done 240 hours of study toward my AZ-104 Exam whic
 From Agile collaboration to cloud automation, and now AI-driven intelligence, DevOps continues to reinvent how we build, ship, and scale software.
 Companies that embrace the next phase of DevOps will not only innovate faster — they will operate with resilience, security, and clarity in an increasingly complex digital world.
 And that is why DevOps matters more than ever before.</p>
-<img src="https://eu.uploads.micro.blog/275033/2025/predictive-monitoring.jpg">
+<img src="uploads/2025/predictive-monitoring.jpg">
 
 		</div>
 	  </div>
@@ -3158,7 +3320,7 @@ And that is why DevOps matters more than ever before.</p>
 <p>Always maintain a consistent method for capturing notes, whether physically or digitally.</p>
 <p>Don’t simply gather notes; process them. This is what leads to real knowledge.</p>
 <p>Connecting and linking that knowledge creates the foundation for limitless growth.</p>
-<img src="https://eu.uploads.micro.blog/275033/2025/the-zettelkasten-method-note.jpg">
+<img src="uploads/2025/the-zettelkasten-method-note.jpg">
 
 		</div>
 	  </div>
@@ -3201,7 +3363,7 @@ This demanded:
 •	Strong CI/CD pipelines
 •	New architecture patterns
 DevOps evolved again — from a team culture to a platform capability.</p>
-<p><img src="https://eu.uploads.micro.blog/275033/2025/agile-devops.jpg" width="600" height="599" alt=""><img src="https://eu.uploads.micro.blog/275033/2025/infrastructure-code.jpg" width="600" height="456" alt=""></p>
+<p><img src="uploads/2025/agile-devops.jpg" width="600" height="599" alt=""><img src="uploads/2025/infrastructure-code.jpg" width="600" height="456" alt=""></p>
 
 		</div>
 	  </div>
@@ -3227,7 +3389,7 @@ DevOps evolved again — from a team culture to a platform capability.</p>
 This adaptability lies at the heart of the method. Your notes enable you to pick up right where you left off or move to a different task without friction. By matching your work to your energy and mood, the system becomes like a river—flowing toward what is easiest and most aligned in the moment.</p>
 <p>Effortless Productivity and Deeper Thinking</p>
 <p>Because you no longer need to juggle every detail mentally, you can handle more complex tasks with ease. Linking notes allows you to see relationships, patterns, and insights that would be difficult to retain in your head alone. This kind of supported thinking allows you to solve problems more effectively, generate meaningful ideas, and maintain productivity without burnout. The Zettelkasten system becomes a powerful partner—helping you think better, create better, and work with greater fluidity.</p>
-<img src="https://eu.uploads.micro.blog/275033/2025/the-zettelkasten-method.jpg">
+<img src="uploads/2025/the-zettelkasten-method.jpg">
 
 		</div>
 	  </div>
